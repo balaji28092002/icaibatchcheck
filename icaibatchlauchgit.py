@@ -8,7 +8,7 @@ import datetime
 
 URL = "https://www.icaionlineregistration.org/LaunchBatchDetail.aspx"
 
-BOT_TOKEN = "TELEGRAM_BOT_TOKEN"
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHAT_ID = "-5100517651"
 
 
@@ -104,4 +104,5 @@ def check_batch():
 
 
 if __name__ == "__main__":
+
     check_batch()
