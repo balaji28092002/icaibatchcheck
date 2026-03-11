@@ -39,7 +39,7 @@ def check_batch():
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     
-    log("Launching Firefox in headless mode...")
+    log("Launching Chromium in headless mode...")
     driver = Chrome(options=options)
 
     try:
@@ -55,7 +55,7 @@ def check_batch():
 
         log("Selecting POU: Chennai")
         pou = Select(driver.find_element(By.ID, "ddlPou"))
-        pou.select_by_visible_text("Alappuzha")
+        pou.select_by_visible_text("CHENNAI")
 
         time.sleep(1)
 
@@ -112,6 +112,7 @@ def check_batch():
 if __name__ == "__main__":
 
     check_batch()
+
 
 
 
