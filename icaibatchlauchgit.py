@@ -73,16 +73,16 @@ def check_batch():
         log("Waiting for results to load...")
         time.sleep(2)
 
-        rows = driver.find_elements(By.XPATH, "/html/body/form/div[3]/div[7]/div/table/tbody/tr")
-
+        rows = driver.find_elements(By.XPATH, "//table/tbody/tr")
+        
         seats_available = False
         log("Checking page content for batch availability...")
-        # skip header row
-        for row in rows[1:]:
-            seats = row.find_element(By.XPATH, "./td[2]").text.strip()
-            batch = row.find_element(By.XPATH, "./td[1]").text
+        
+        for row in rows[1:]:  # skip header
             try:
-                seats = int(seats)
+                seats = row.find_element(By.XPATH, "./td[2]").text.strip()
+                seats = int(seats.replace(",", ""))
+                batch = row.find_element(By.XPATH, "./td[1]").text
             except:
                 continue
 
@@ -93,6 +93,7 @@ def check_batch():
         if seats_available:
            msg = f"🚨 ICAI AICITSS Batch OPENED for Chennai and seats available in {batch}!"
            print(f"🚨 BATCH OPEN WITH AVAILABLE SEATS in {batch}!")
+           print(f"Batch: {batch} | Seats detected: {seats}")
            send_telegram(msg)
         elif len(rows) > 1:
            msg = f"🚨 ICAI AICITSS Batch exists in Chennai but seats are FULL."
@@ -111,5 +112,6 @@ def check_batch():
 if __name__ == "__main__":
 
     check_batch()
+
 
 
