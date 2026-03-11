@@ -5,6 +5,7 @@ from selenium.webdriver.firefox.options import Options
 import requests
 import time
 import datetime
+import os
 
 URL = "https://www.icaionlineregistration.org/LaunchBatchDetail.aspx"
 
@@ -106,3 +107,4 @@ def check_batch():
 if __name__ == "__main__":
 
     check_batch()
+
