@@ -2,7 +2,7 @@ name: ICAI Batch Checker
 
 on:
   schedule:
-    - cron: "*/15 1-17 * * *"
+    - cron: "0 5 * * *"
   workflow_dispatch:
 
 jobs:
