@@ -2,7 +2,7 @@ name: ICAI Batch Checker
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/5 1-17 * * *"
   workflow_dispatch:
 
 jobs:
@@ -22,9 +22,10 @@ jobs:
         run: |
           pip install selenium requests
           sudo apt-get update
-          sudo apt-get install -y firefox-esr
+          sudo apt-get install -y firefox
+          sudo apt-get install -y firefox-geckodriver
 
       - name: Run script
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        run: python icaibatchlauchgit.py
+        run: python linux.py
