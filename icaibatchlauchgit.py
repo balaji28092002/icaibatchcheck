@@ -1,7 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver import Chrome
 import requests
 import time
 import datetime
@@ -33,10 +35,12 @@ def check_batch():
     log("Starting ICAI batch check...")
 
     options = Options()
-    options.add_argument("--headless")
-
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    
     log("Launching Firefox in headless mode...")
-    driver = webdriver.Firefox(options=options)
+    driver = Chrome(options=options)
 
     try:
 
@@ -107,4 +111,5 @@ def check_batch():
 if __name__ == "__main__":
 
     check_batch()
+
 
