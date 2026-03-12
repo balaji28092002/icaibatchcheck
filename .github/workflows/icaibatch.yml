@@ -1,4 +1,4 @@
-name: ICAI Batch Checker
+name: ICAI Adv ITT Batch Checker
 
 on:
   schedule:
